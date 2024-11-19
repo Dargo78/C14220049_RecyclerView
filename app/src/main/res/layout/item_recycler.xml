@@ -42,6 +42,7 @@
         android:layout_marginTop="28dp"
         android:text="deskripsiWayang"
         android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/karakterWayang"
         app:layout_constraintTop_toBottomOf="@+id/karakterWayang" />
 </androidx.constraintlayout.widget.ConstraintLayout>
