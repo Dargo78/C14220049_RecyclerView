@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -17,12 +18,15 @@ class AdapterRecView(private val listWayang: ArrayList<wayang>) :
         var _karakterWayang = itemView.findViewById<TextView>(R.id.karakterWayang)
         var _deskripsiWayang = itemView.findViewById<TextView>(R.id.deskripsiWayang)
         var _gambarWayang = itemView.findViewById<ImageView>(R.id.gambarWayang)
+        var _btnHapus = itemView.findViewById<Button>(R.id.btnHapus)
     }
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     interface OnItemClickCallback {
         fun onItemClicked(data: wayang)
+
+        fun delData(pos: Int)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -52,6 +56,10 @@ class AdapterRecView(private val listWayang: ArrayList<wayang>) :
         holder._gambarWayang.setOnClickListener {
 //            Toast.makeText(holder.itemView.context, wayang.nama, Toast.LENGTH_LONG).show()
             onItemClickCallback.onItemClicked(listWayang[position])
+        }
+
+        holder._btnHapus.setOnClickListener {
+            onItemClickCallback.delData(position)
         }
     }
 
